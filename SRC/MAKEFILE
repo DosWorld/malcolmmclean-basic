@@ -1,0 +1,12 @@
+all: MBASIC.EXE
+
+install: MBASIC.EXE
+	COPY MBASIC.EXE ..\
+
+MBASIC.EXE: MBASIC.C BASIC.C BASIC.H
+        wcl mbasic.c basic.c
+
+clean:
+	DEL *.BAK
+	DEL *.OBJ
+	DEL MBASIC.EXE
