@@ -126,52 +126,52 @@
 
 typedef struct {
     int no;                 /* line number */
-    const char *str;		  /* points to start of line */
+    const char *str;                  /* points to start of line */
 } LINE;
 
 typedef struct {
-    char id[32];			/* id of variable */
-    double dval;			/* its value if a real */
-    char *sval;			/* its value if a string (malloced) */
+    char id[32];                        /* id of variable */
+    double dval;                        /* its value if a real */
+    char *sval;                        /* its value if a string (malloced) */
 } VARIABLE;
 
 typedef struct {
-    char id[32];			/* id of dimensioned variable */
-    int type;				/* its type, STRID or FLTID */
-    int ndims;			/* number of dimensions */
-    int dim[5];			/* dimensions in x y order */
-    char **str;			/* pointer to string data */
-    double *dval;			/* pointer to real data */
+    char id[32];                        /* id of dimensioned variable */
+    int type;                                /* its type, STRID or FLTID */
+    int ndims;                        /* number of dimensions */
+    int dim[5];                        /* dimensions in x y order */
+    char **str;                        /* pointer to string data */
+    double *dval;                        /* pointer to real data */
 } DIMVAR;
 
 typedef struct {
-    int type;				/* type of variable (STRID or FLTID or ERROR) */
-    char **sval;			/* pointer to string data */
-    double *dval;			/* pointer to real data */
+    int type;                                /* type of variable (STRID or FLTID or ERROR) */
+    char **sval;                        /* pointer to string data */
+    double *dval;                        /* pointer to real data */
 } LVALUE;
 
 typedef struct {
-    char id[32];			/* id of control variable */
-    int nextline;			/* line below FOR to which control passes */
-    double toval;			/* terminal value */
-    double step;			/* step size */
+    char id[32];                        /* id of control variable */
+    int nextline;                        /* line below FOR to which control passes */
+    double toval;                        /* terminal value */
+    double step;                        /* step size */
 } FORLOOP;
 
 static FORLOOP forstack[MAXFORS];   /* stack for for loop conrol */
-static int nfors;					/* number of fors on stack */
+static int nfors;                                        /* number of fors on stack */
 
-static VARIABLE *variables;			/* the script's variables */
-static int nvariables;				/* number of variables */
+static VARIABLE *variables;                        /* the script's variables */
+static int nvariables;                                /* number of variables */
 
-static DIMVAR *dimvariables;		/* dimensioned arrays */
-static int ndimvariables;			/* number of dimensioned arrays */
+static DIMVAR *dimvariables;                /* dimensioned arrays */
+static int ndimvariables;                        /* number of dimensioned arrays */
 
-static LINE *lines;					/* list of line starts */
-static int nlines;					/* number of BASIC lines in program */
+static LINE *lines;                                        /* list of line starts */
+static int nlines;                                        /* number of BASIC lines in program */
 
-static FILE *fpin;				/* input stream */
-static FILE *fpout;				/* output strem */
-static FILE *fperr;				/* error stream */
+static FILE *fpin;                                /* input stream */
+static FILE *fpout;                                /* output strem */
+static FILE *fperr;                                /* error stream */
 
 static const char *string;        /* string we are parsing */
 static int token;                 /* current token (lookahead) */
@@ -253,8 +253,8 @@ static double factorial(double x);
 
   Params: script - the script to run
           in - input stream
-	  out - output stream
-	  err - error stream
+          out - output stream
+          err - error stream
   Returns: 0 on success, 1 on error condition.
 */
 int basic(const char *script, FILE *in, FILE *out, FILE *err) {
@@ -1697,7 +1697,7 @@ static DIMVAR *finddimvar(const char *id) {
   dimension an array.
   Params: id - the id of the array (include leading ()
           ndims - number of dimension (1-5)
-	  ... - integers giving dimension size,
+          ... - integers giving dimension size,
 */
 static DIMVAR *dimension(const char *id, int ndims, ...) {
     DIMVAR *dv;
@@ -2814,7 +2814,7 @@ static double getvalue(const char *str, int *len) {
   getid - get an id from the parse string:
   Params: str - string to search
           out - id output [32 chars max ]
-	  len - return pointer for id length
+          len - return pointer for id length
   Notes: triggers an error if id > 31 chars
          the id includes the $ and ( qualifiers.
 */

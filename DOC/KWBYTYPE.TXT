@@ -1,0 +1,25 @@
+Keywords by type
+
+Arithmetical operators
++ - / * () !
+MOD
+
+Mathematical constants
+PI, e
+
+Mathematical functions
+SIN, COS, TAN, ASIN, ACOS, ATAN, LN, POW, SQRT, INT
+RND
+
+String functions that return a numerical value
+LEN, VAL, ASCII, INSTR, VALLEN
+
+Statements
+PRINT, LET, DIM, IF, GOTO, INPUT, REM, FOR, NEXT
+
+Auxiliary keywords
+THEN, AND, OR, TO, STEP
+
+Functions that return a string
+CHR$, STR$, LEFT$, RIGHT$, MID$, STRING$
+

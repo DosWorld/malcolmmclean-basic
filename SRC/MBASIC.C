@@ -1,3 +1,17 @@
+/*****************************************************************
+*                           Mini BASIC                           *
+*                        by Malcolm McLean                       *
+*                           version 1.0                          *
+* You can do virtually anything you like with this code,         *
+* including incorporating it into your own programs, or          *
+* modifying as the basis for a scripting language of your own.   *
+* It would be nice to be acknowledged but I don't insist on it   *
+* - you can pretend that you created the program on your own if  *
+* it makes your boss happy. The only thing you can't do is       *
+* restrict my rights in the program in any way. So any           *
+* derivative works or enhancements I can use as I see fit.       *
+*****************************************************************/
+
 /*
   driver file for MiniBasic.
   by Malcolm Mclean
@@ -11,26 +25,24 @@
 
 char *loadfile(char *path);
 
-/*
-  here is a simple script to play with
-*/
-char *script =
-    "10 REM Test Script\n"
-    "20 REM Tests the Interpreter\n"
-    "30 REM By Malcolm Mclean\n"
-    "35 PRINT \"HERE\" \n"
-    "40 PRINT INSTR(\"FRED\", \"ED\", 4)\n"
-    "50 PRINT VALLEN(\"12a\"), VALLEN(\"xyz\")\n"
-    "60 LET x = SQRT(3.0) * SQRT(3.0)\n"
-    "65 LET x = INT(x + 0.5)\n"
-    "70 PRINT MID$(\"1234567890\", x, -1)\n"
-    ;
+char *basename(char *n) {
+        int i;
+        i = 0;
+        while(n[i] != 0) {
+                i++;
+        }
+        while((i >= 0) && (n[i] != '\\') && (n[i] != '/')) {
+                i--;
+        }
+        i++;
+        return n + i;
+}
 
-void usage(void) {
-    printf("MiniBasic: a BASIC interpreter\n");
-    printf("usage:\n");
-    printf("Basic <script>\n");
-    printf("See documentation for BASIC syntax.\n");
+void usage(char *path) {
+    printf("MiniBasic Version 1.0. Copyright (c) by Malcolm McLean\n\n");
+    printf("Usage:\n");
+    printf("\t%s filename.bas\n\n", basename(path));
+    printf("See documentation for BASIC syntax and LICENSE.TXT for license.\n");
     exit(EXIT_FAILURE);
 }
 
@@ -40,10 +52,9 @@ void usage(void) {
 int main(int argc, char **argv) {
     char *scr;
 
-    if(argc == 1) {
+    if(argc != 2) {
         /* comment out usage call to run test script */
-        usage();
-        basic(script, stdin, stdout, stderr);
+        usage(argv[0]);
     } else {
         scr = loadfile(argv[1]);
         if(scr) {

@@ -2,14 +2,14 @@
 
 MiniBasic is designed as a simple programming language, based on BASIC.
 If you already know BASIC then you are well on your way to learning
-MiniBasic, if you don�t then MiniBasic is one of the simplest programming
+MiniBasic, if you don't then MiniBasic is one of the simplest programming
 languages to learn.
 
 MiniBasic programs are written in ASCII script. They are then interpreted
-by the computer. This is in contrast to most �serious� languages, which are
+by the computer. This is in contrast to most "serious" languages, which are
 compiled, that is, translated into machine instructions and then run.
 Interpreted languages are slower than compiled languages, but they have several
-advantages. One major one is that they are portable � a MiniBasic script will
+advantages. One major one is that they are portable a MiniBasic script will
 run on any computer that has a MiniBasic interpreter installed.
 Another advantage, especially for beginners, is that errors are much easier
 to identify. Finally, MiniBasic is not really intended as a standalone program,
@@ -30,7 +30,7 @@ user programs.
 
 The final goal is that the interpreter should be what is technically known as
 "Turing equivalent". This means that it is possible to implement any algorithm
-in MiniBasic. This required one major extension to common Basic � the ability
+in MiniBasic. This required one major extension to common Basic the ability
 to redimension arrays.
 
 It is impossible to implement graphics commands in portable ANSI C, so sound,

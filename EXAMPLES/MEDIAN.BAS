@@ -28,4 +28,5 @@
 250 LET mid = array(N/2) + array(N/2+1)
 260 LET mid = mid/2
 270 PRINT "Median", mid
-1000 REM end  
+1000 REM end
+

@@ -1,0 +1,100 @@
+1) Expressions.
+
+All expressions are evaluated using floating-point arithmetic.
+The + and - operators have lower precedence than *, / and MOD (modulus),
+which have equal precedence and are evaluated left to right. ! (factorial)
+has the highest precedence. There is no exponentiation operator (use the POW()
+function instead).
+
+There are two mathematical constants, e, Euler's number, 2.71281828, and PI,
+3.14159265.
+
+It is possible to use variables or dimensioned variables in expressions.
+
+Typical expressions are
+
+10 - absolute value 10
+
+x - value of variable x
+
+(x + y) * 2 - add x to y and multiply by two
+
+array(1,2) - value of array element 1, 2
+
+POW( x + y, 2) + array(1, LEN(A$)) - raise x + y to the power 2 and add an
+element of the array - array given by 1 and the length of A$.
+
+MOD calculates the floating point modulus of a number. Both sides of the
+expression should be of the same sign. x MOD 0 is an error. Division by zero
+is also an error.
+
+Floating point arithmetic is not exact, so expressions such as
+SQRT(2.0) * SQRT(2.0) may not be exactly whole numbers. Using the
+function INT(x + 0.5) you can force an expression to be the nearest exact
+integer.
+
+Arrays are stored with the x dimension in the first column. This matters when
+initialising an 2d array with a list of values.
+
+10 DIM a(4,4) = 1, 2, 3, 4,
+5, 6, 7, 8
+9, 10, 11, 12,
+13, 14, 15, 16
+
+will create an ascending list in a(x,y) order.
+
+Array indices start from 1 and finish at the dimension size. Thus a(1,1)
+is the first element of the array, and a(4.4) the highest.
+
+Note that there must be no space between an array name and the first
+parenthesis.
+
+2) String expressions.
+
+All strings are stored internally in ASCII format, as NUL-terminated arrays.
+Use of extremely large strings is likely to slow down the program, since most
+operations involve internal copying of strings.
+
+A string literal consists of one or more concatenated quotes. A string can be
+spread over several lines, but the newline character is not allowed inside
+quotes. To enclose a quotation mark in astring, use double quotes.
+
+10 LET A$ = "And God said Let there be light"
+
+is an example of a legal string. Note that the start of the second line
+contains white space at the beginning to tell the interpreter it is a
+continuation of the previous line.
+
+To add a newline or other control character, use the CHR$() function.
+Note that CHR$(0) will prematurely terminate the string. Use the ASCII()
+function to perform numerical manipulation on characters.
+
+e.g LET B$ = CHR$( ASCII(B$) + 1) will set B$ to the next letter of the
+alphabet.
+
+The + operator will concatenate strings.
+
+10 PRINT "Fred" + "Bloggs" + CHR$(42) + x$
+
+Will print "FredBloggs" followed by the contents of x$
+Functions with names ending in $ always return strings. Parentheses are not
+optional.
+
+3) Relational expressions.
+
+Relational expressions are used only in IF ... THEN statements to make
+conditional jumps.
+A relational expression evaluates to either true or false. The allowed
+operators a =, <> (doesnt equal), >, >=, <, <=.
+
+With expressions the comparison is numerical, and with strings it is
+alphabetical. Both sides of a relational operator must be of the same type.
+
+Relational expressions can contain the keywords AND and OR. Order of
+evaluation is left to right, but parentheses should always be used to
+disambiguate mixed expressions.
+
+Examples of use
+
+10 IF (x <= 5 AND x > 0) OR x = 10 THEN 100
+
